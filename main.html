@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THARUSHA-MD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,8 +16,9 @@
 
         body {
             min-height: 100vh;
-            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            position: relative;
         }
 
         /* Light Theme */
@@ -23,23 +26,43 @@
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             color: #333;
         }
-        
+
         body.light .para {
-          color: dimgray;
+            color: #555;
         }
 
         /* Dark Theme */
         body.dark {
             background: linear-gradient(135deg, #1e1e2f, #2a2a3b);
-            color: #4facfe;
+            color: #fff;
         }
 
+        /* Animated Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
@@ -47,112 +70,225 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: 2px;
-            opacity: 0;
-            animation: titleGlow 1.3s infinite alternate, fadeIn 1s forwards;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 10px rgba(79, 172, 254, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(79, 172, 254, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(79, 172, 254, 0.5); }
         }
 
         .theme-toggle {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: inherit;
+            color: #4facfe;
+            transition: transform 0.3s ease;
         }
 
+        .theme-toggle:hover {
+            transform: rotate(360deg);
+        }
+
+        /* Hero Section */
         .hero {
-            height: 110vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes titleGlow {
-            from { text-shadow: 0 0 20px #1b2e3e }
-            to { text-shadow: 0 0 40px #4facfe }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.2), transparent);
+            opacity: 0.5;
+            z-index: -1;
+            animation: pulse 10s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
 
         .hero img {
-            display: flex;
-            opacity: 0;
-            animation: fadeIn 1.5s forwards 0.5s;
+            width: 300px;
+            height: 150px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: 6rem;
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1.5s forwards 0.5s;
         }
 
         .hero p {
-            opacity: 0;
-            font-size: 1.4rem;
-            animation: fadeIn 1.5s forwards 0.5s;
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-bottom: 30px;
         }
 
         .buttons {
             display: grid;
             grid-template-columns: repeat(3, minmax(150px, 1fr));
             gap: 20px;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1.5s forwards 1s;
             max-width: 800px;
             width: 100%;
         }
 
         .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #2594f284;
-            border-radius: 20px;
-            padding: 2.5vw 4vw;
-            margin: 10px 0;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border-radius: 50px;
+            padding: 15px 30px;
             color: white;
-            font-size: 1.5rem;
-            font-weight: 900;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: glow 2s infinite alternate;
+            font-size: 1.2rem;
+            font-weight: 600;
             text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 60px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn.link-device {
-            background: #215589ae;
-            border: 2px solid yellow;
-            animation: floatUp 2.4s ease-in-out infinite;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
         }
 
         .btn.deploy {
-            background: #215589ae;
-            border: 2px solid aqua;
-            animation: floatUp 2s ease-in-out infinite;
-        }
-
-        .btn.deploy:hover {
-            background: #173b60;
+            background: linear-gradient(45deg, #00c4b4, #00f2fe);
         }
 
         .btn.help {
-            background: #215589ae;
-            border: 2px solid orange;
-            animation: floatUp 1.3s ease-in-out infinite;
+            background: linear-gradient(45deg, #ffa726, #ff5722);
         }
 
+        /* Card Section */
+        .card-container {
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #4facfe;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: rotate(360deg);
+        }
+
+        .heater {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .para {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            color: #4facfe;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #00f2fe;
+            transform: scale(1.3);
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections Container */
         .sections-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -163,52 +299,55 @@
         }
 
         .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-glass: blur(10px);
+            border-radius: 15px;
             padding: 30px;
             text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
         }
 
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .section:hover {
+            transform: translateY(-10px);
         }
 
         .section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 15px;
         }
 
         .section p {
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .section a {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .section a:hover {
+            color: #00f2fe;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
-                padding: 20px;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 1.8rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
             }
 
             .buttons {
@@ -217,128 +356,19 @@
             }
 
             .btn {
-                padding: 15px 20px;
+                padding: 12px 20px;
                 font-size: 1rem;
-                min-height: 50px;
             }
 
             .sections-container {
                 grid-template-columns: 1fr;
                 padding: 20px;
-              /*  animation: floatUp 1.7s ease-in-out infinite;*/
             }
 
-            .section {
+            .card {
+                width: 100%;
                 padding: 20px;
-                animation: floatUp 2s ease-in-out infinite;
             }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-            .section a {
-                text-decoration: none;
-                font-size: 22px;
-                color: orange;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .btn {
-                padding: 3vw 5vw;
-                font-size: 1.4rem;
-            }
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 40vh;
-            padding: 50px 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(30px);
-            border-radius: 30px;
-            padding: 50px;
-            text-align: center;
-            width: 380px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-            position: relative;
-            animation: floatUp 1.7s ease-in-out infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #4facfe;
-            margin-bottom: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .profile-img:hover {
-            transform: rotate(360deg);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-        }
-
-        .heater {
-            color: #4facfe;
-            font-size: 29px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-           /* text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);*/
-        }
-
-        .para {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .social-icons a {
-            text-decoration: none;
-            margin: 0 20px;
-            color: orange;
-            font-size: 22px;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #665123ae;
-            transform: scale(1.2);
-        }
-
-        .contact-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff416c, #4facfe);
-            color: white;
-            padding: 18px 36px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: background 0.4s, transform 0.3s, box-shadow 0.3s;
-        }
-
-        .contact-btn:hover {
-            background: linear-gradient(45deg, #ff4b2b, #4facfe);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
@@ -352,7 +382,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="https://i.ibb.co/nsRTY8vq/2788.jpg" height="150px" width="300px"><br><br>
+        <img src="https://i.ibb.co/nsRTY8vq/2788.jpg" alt="Banner">
         <h1>Welcome to THARUSHA-MD</h1>
         <p class="para">One-click deployment • Easy management • Simple & free</p>
         <div class="buttons">
@@ -367,20 +397,22 @@
         <div class="card">
             <img src="https://i.ibb.co/ynt58k5N/4bddd62f730b1c51.jpg" alt="Profile" class="profile-img">
             <h2 class="heater">THARUSHA SANDIPA ☺️</h2>
-            <p class="para">IM WEB DESIGNER AND WEB DEVOLOPER<br>My full name is W.A Tharusha Sandipa.I live in anuradhapura rajanganaya village. I am 17 years old. relationship-  Rashini sanjana.💚</p>
+            <p class="para">I'm a Web Designer and Developer. My full name is W.A Tharusha Sandipa. I live in Anuradhapura, Rajanganaya village. I am 17 years old. In a relationship with Rashini Sanjana. 💚</p>
             <div class="social-icons">
-                <a href="https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45" target="_blank">🔗 Follow</a>
-               <br> <a href="https://wa.me/+94740326138?text=_Hey" target="_blank">🔗 Contact me</a>
+                <a href="https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/+94740326138?text=_Hey" target="_blank"><i class="fas fa-envelope"></i></a>
             </div>
+            <!--<a href="https://wa.me/+94740326138?text=_Hey" class="contact-btn">Contact Me</---->
         </div>
     </div>
 
     <!-- Sections Container with Grid -->
     <div class="sections-container">
         <section class="section">
-            <h2 class="heater">ABOUT THIS BOT</h2>
-            <p class="para">THARUSHA-MD is Sri lankan best whatsapp bot created by Mr.Tharusha Sandipa Wanniarachchi.</p><br><br>
-            <h3>THIS BOT FEATURE</h3><br><p class="para">whatsapp status auto seen.<br>whatsapp status auto react.<br>whatsapp status auto reply.<br>song, video, Facebook video,<br> Tik tok video, Twitter video<br> download and other features.</p>
+            <h2 class="heater">About This Bot</h2>
+            <p class="para">THARUSHA-MD is Sri Lanka's best WhatsApp bot, created by Mr. Tharusha Sandipa Wanniarachchi.</p>
+            <h3>Bot Features</h3>
+            <p class="para">WhatsApp status auto-seen, auto-react, auto-reply, song/video downloads, Facebook, TikTok, Twitter video downloads, and more.</p>
         </section>
         <section class="section">
             <h2 class="heater">Our Services</h2>
@@ -388,10 +420,13 @@
         </section>
         <section class="section">
             <h2 class="heater">Contact Us</h2>
-            <a href="https://wa.me/+94740326138?text=HAVE_ERROR_THARUSHA-MD⚠️">Whatsapp</a>
+            <p class="para">Reach out for support or inquiries.</p>
+            <a href="https://wa.me/+94740326138?text=HAVE_ERROR_THARUSHA-MD⚠️">WhatsApp</a>
         </section>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script>
         // Theme Toggle
         function toggleTheme() {
@@ -401,20 +436,39 @@
             themeButton.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
         }
 
-        // Scroll Animation
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        // GSAP Animations
+        gsap.from('.hero img', { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+        gsap.from('.hero h1', { opacity: 0, y: 50, duration: 1, delay: 0.7 });
+        gsap.from('.hero p', { opacity: 0, y: 50, duration: 1, delay: 0.9 });
+        gsap.from('.buttons .btn', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 1.1,
+            stagger: 0.2
+        });
 
-        sections.forEach(section => {
-            observer.observe(section);
+        gsap.from('.card', {
+            scrollTrigger: {
+                trigger: '.card-container',
+                start: 'top 80%',
+            },
+            opacity: 0,
+            scale: 0.8,
+            duration: 1
+        });
+
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1
+            });
         });
     </script>
 </body>
 </html>
-
