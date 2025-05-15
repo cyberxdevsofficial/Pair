@@ -37,23 +37,73 @@
             color: #fff;
         }
 
-        /* Animated Background */
+        /* Optimized Animated Background */
         .cyber-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 1px, transparent 1px);
+            background-size: 25px 25px;
             opacity: 0.3;
             z-index: -1;
-            animation: gridMove 20s linear infinite;
+            animation: fadePulse 10s ease-in-out infinite;
+            will-change: opacity;
         }
 
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
+        @keyframes fadePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.15; }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e1e2f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #e62d64);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 10s ease-in-out infinite;
+        }
+
+        .loader p {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 20px;
+            font-weight: 800;
+            background-size: 300%;
+            background: #4facfe;
+              -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 10s ease-in-out infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0%; }
+            50% { background-position: 300%; }
+            100% { background-position: 0%; }
         }
 
         /* Navbar */
@@ -67,22 +117,29 @@
             position: fixed;
             width: 100%;
             z-index: 1000;
+            will-change: transform;
         }
 
         .logo {
-            font-size: 2.2rem;
+            /*font-size: 2.5rem;
+            /*font-weight: 800;
+           /* letter-spacing: 1px;
+            /*background: linear-gradient(45deg, #4facfe, #00f2fe, #ff416c);
+
+          /*  background: linear-gradient(45deg, #4facfe, #00f2fe);*/
+            /*-webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;*/
+              /* -webkit-background-clip: text;
+            /*-webkit-text-fill-color: transparent;
+           /* animation: gradientText 5s ease-in-out infinite;*/
+            
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: 3px;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #e62d64);
+            background-size: 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: pulseGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseGlow {
-            0% { text-shadow: 0 0 10px rgba(79, 172, 254, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(79, 172, 254, 0.8); }
-            100% { text-shadow: 0 0 10px rgba(79, 172, 254, 0.5); }
+            animation: gradientText 10s ease-in-out infinite;
         }
 
         .theme-toggle {
@@ -119,31 +176,27 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle, rgba(79, 172, 254, 0.2), transparent);
-            opacity: 0.5;
+            opacity: 0.4;
             z-index: -1;
-            animation: pulse 10s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.3; }
-            100% { transform: scale(1); opacity: 0.5; }
         }
 
         .hero img {
-            width: 300px;
-            height: 150px;
-            border-radius: 15px;
+            width: 330px;
+            height: 175px;
+            border-radius: 18px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
+            animation: buttonPop 1.5s ease-in-out infinite;
         }
 
         .hero h1 {
             font-size: 5rem;
             font-weight: 800;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #e62d64);
+            background-size: 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientText 10s ease-in-out infinite;
             margin-bottom: 20px;
         }
 
@@ -171,10 +224,18 @@
             font-weight: 600;
             text-decoration: none;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             position: relative;
             overflow: hidden;
+            will-change: transform;
+            animation: buttonPop 2s ease-in-out infinite;
         }
+        
+            @keyframes buttonPop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
 
         .btn::before {
             content: '';
@@ -184,7 +245,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
+            transition: left 0.4s ease;
         }
 
         .btn:hover::before {
@@ -192,8 +253,8 @@
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn.link-device {
@@ -224,12 +285,13 @@
             padding: 40px;
             text-align: center;
             width: 400px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            transition: transform 0.5s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .profile-img {
@@ -239,7 +301,7 @@
             border: 5px solid #4facfe;
             margin-bottom: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
         }
 
         .profile-img:hover {
@@ -259,6 +321,7 @@
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 20px;
+            font-weight: 200;
         }
 
         .social-icons a {
@@ -269,8 +332,8 @@
         }
 
         .social-icons a:hover {
-            color: #00f2fe;
-            transform: scale(1.3);
+            color: #ff416c;
+            transform: scale(1.2);
         }
 
         .contact-btn {
@@ -280,12 +343,12 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .contact-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Sections Container */
@@ -300,16 +363,17 @@
 
         .section {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-glass: blur(10px);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .section:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .section h2 {
@@ -326,10 +390,11 @@
             color: #4facfe;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s;
         }
 
         .section a:hover {
-            color: #00f2fe;
+            color: #ff416c;
         }
 
         /* Responsive Design */
@@ -369,10 +434,24 @@
                 width: 100%;
                 padding: 20px;
             }
+
+            .loader h1 {
+                font-size: 3rem;
+            }
+
+            .loader p {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body class="dark">
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <h1 id="loadingPercentage">1%</h1>
+        <p>Loading THARUSHA-MD WEB SITE...</p>
+    </div>
+
     <div class="cyber-grid"></div>
     <!-- Navbar -->
     <nav class="navbar">
@@ -402,7 +481,6 @@
                 <a href="https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://wa.me/+94740326138?text=_Hey" target="_blank"><i class="fas fa-envelope"></i></a>
             </div>
-            <!--<a href="https://wa.me/+94740326138?text=_Hey" class="contact-btn">Contact Me</---->
         </div>
     </div>
 
@@ -428,6 +506,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script>
+        // Loading Animation
+        window.addEventListener('load', () => {
+            let percentage = 1;
+            const loader = document.getElementById('loader');
+            const percentageText = document.getElementById('loadingPercentage');
+
+            const loadingInterval = setInterval(() => {
+                percentage++;
+                percentageText.textContent = `${percentage}%`;
+                if (percentage >= 100) {
+                    clearInterval(loadingInterval);
+                    loader.classList.add('hidden');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
+            }, 30);
+        });
+
         // Theme Toggle
         function toggleTheme() {
             document.body.classList.toggle('light');
@@ -436,39 +533,41 @@
             themeButton.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
         }
 
-        // GSAP Animations
-        gsap.from('.hero img', { opacity: 0, y: 50, duration: 1, delay: 0.5 });
-        gsap.from('.hero h1', { opacity: 0, y: 50, duration: 1, delay: 0.7 });
-        gsap.from('.hero p', { opacity: 0, y: 50, duration: 1, delay: 0.9 });
+        // Optimized GSAP Animations
+        gsap.from('.hero img', { opacity: 0, y: 30, duration: 0.8 });
+        gsap.from('.hero h1', { opacity: 0, y: 30, duration: 0.8, delay: 0.2 });
+        gsap.from('.hero p', { opacity: 0, y: 30, duration: 0.8, delay: 0.4 });
         gsap.from('.buttons .btn', {
             opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 1.1,
-            stagger: 0.2
+            y: 30,
+            duration: 0.8,
+            delay: 0.6,
+            stagger: 0.1
         });
 
         gsap.from('.card', {
             scrollTrigger: {
                 trigger: '.card-container',
-                start: 'top 80%',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
             },
             opacity: 0,
-            scale: 0.8,
-            duration: 1
+            scale: 0.9,
+            duration: 0.8
         });
 
         gsap.utils.toArray('.section').forEach(section => {
             gsap.from(section, {
                 scrollTrigger: {
                     trigger: section,
-                    start: 'top 80%',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
                 },
                 opacity: 0,
-                y: 50,
-                duration: 1
+                y: 30,
+                duration: 0.8
             });
         });
     </script>
 </body>
-</html>
+    </html>
