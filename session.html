@@ -37,7 +37,9 @@
             position: fixed;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, rgb(31,5,106), var(--accent-color), var(--secondary-color));
+            /*background: linear-gradient(135deg, #ff6b6b, #ff8e53, #f1c40f, #2ecc71, #3498db, #9b59b6,
+        #e74c3c, #1abc9c, #f39c12, #8e44ad, #c0392b, #2980b9/*rgb(31,5,106), var(--accent-color), var(--secondary-color)*/);*/
+            background: linear-gradient(135deg, #1e1e2f, #2a2a3b);
             background-size: 200%;
             animation: waveFlow 10s ease-in-out infinite;
             z-index: 0;
@@ -82,8 +84,8 @@
 
         /* Main Container */
         .container {
-            background: rgba(26,26,46,0.547);
-            border: 3px solid var(--primary-color);
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-color);
             border-radius: 20px;
             padding: 30px;
             width: 400px;
@@ -91,7 +93,7 @@
             z-index: 2;
             animation: bounce 4s ease-in-out infinite /*fadeIn 1.5s ease-in*/;
             box-shadow: 0 0 30px var(--shadow-color);
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(60px);
         }
 
         @keyframes bounce {
