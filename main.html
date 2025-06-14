@@ -36,6 +36,11 @@
             background: linear-gradient(135deg, #1e1e2f, #2a2a3b);
             color: #fff;
         }
+    
+        body.light .btn {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            color: #555;
+        }
 
         /* Optimized Animated Background */
         .cyber-grid {
@@ -221,7 +226,7 @@
             padding: 15px 30px;
             color: white;
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 900;
             text-decoration: none;
             text-align: center;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -248,25 +253,49 @@
             transition: left 0.4s ease;
         }
 
-        .btn:hover::before {
+        /*.btn:hover::before {
             left: 100%;
-        }
+        }*/
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
 
-        .btn:hover {
+       /*.btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
+        }*/
 
         .btn.link-device {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            background: rgba(255, 255, 255, 0.1) /*linear-gradient(45deg, #ff416c, #ff4b2b)*/;
         }
 
         .btn.deploy {
-            background: linear-gradient(45deg, #00c4b4, #00f2fe);
+            background: rgba(255, 255, 255, 0.1) /*linear-gradient(45deg, #00c4b4, #00f2fe)*/;
         }
 
         .btn.help {
-            background: linear-gradient(45deg, #ffa726, #ff5722);
+background: rgba(255, 255, 255, 0.1) /*linear-gradient(45deg, #00c4b4, #00f2fe)*/;
         }
 
         /* Card Section */
@@ -311,10 +340,19 @@
         .heater {
             font-size: 1.8rem;
             font-weight: 600;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            /*background: linear-gradient(45deg, #4facfe, #00f2fe);*/
+            /*background: linear-gradient(45deg, #4facfe, #00f2fe, #e62d64);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
+            animation: gradientText 10s ease-in-out infinite;*/
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #e62d64);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 10s ease-in-out infinite;
+
+
         }
 
         .para {
@@ -461,13 +499,13 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="https://i.ibb.co/nsRTY8vq/2788.jpg" alt="Banner">
+        <img src="https://files.catbox.moe/ir3kxt.jpg" alt="Banner">
         <h1>Welcome to THARUSHA-MD</h1>
         <p class="para">One-click deployment • Easy management • Simple & free</p>
         <div class="buttons">
-            <a href="/session" class="btn link-device">➪ Link-Device</a>
-            <a href="/deploy" class="btn deploy">☺️ Deploy</a>
-            <a href="https://wa.me/+94740326138?text=HELP_ME😢" class="btn help">⚜ Help</a>
+            <a href="/session" class="btn link-device">🔗 Get Session-id</a>
+            <a href="/deploy" class="btn deploy">🚀 Deploy</a>
+            <a href="https://wa.me/+94740326138?text=HELP_ME😢" class="btn help">👤 Help</a>
         </div>
     </section>
 
@@ -570,4 +608,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
