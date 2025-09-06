@@ -75,16 +75,16 @@ var randomItem = selectRandomItem(items);
                         const { upload } = require('./mega');
                         const mega_url = await upload(fs.createReadStream(rf), `${sock.user.id}.json`);
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
-                        let md = "THARUSHA-MD=" + string_session;
+                        let md = "ANUGA-MD=" + string_session;
                         let code = await sock.sendMessage(sock.user.id, { text: md });
-                        let desc = `*👋𝐓𝐇𝐀𝐑𝐔𝐒𝐇𝐀-𝐌𝐃 𝐬𝐞𝐬𝐬𝐢𝐨𝐧 𝐜𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝...*\n\n*🅳🅾🅽'🆃 🆂🅷🅰🆁🅴 🆃🅷🅸🆂 🅲🅾🅳🅴 🆆🅸🆃🅷 🅰🅽🆈🅾🅽🅴!*\n\n*ꜱʀɪ ʟᴀɴᴋᴀɴ ʙᴇꜱᴛ ᴡʜᴀᴛꜱᴀᴘᴘ ᴜꜱᴇʀ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ - ᴍʀ.ᴛʜᴀʀᴜꜱʜᴀ ꜱᴀɴᴅɪᴘᴀ.*\n\n🔰 *🅹🅾🅸🅽 -*https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45\n\n🔰 *🅶🅸🆃🅷🆄🅱 🆁🅴🅿🅾 -*https://github.com/Tharushaaaaa777/THARUSHA-XMD\n\n> *𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰 〽️𝙳*`; 
-                        await sock.sendMessage(sock.user.id, {
+                        let desc = `*👋HELLO, CYBER ANUWH MD SESSION ID IS SUCCESSFULLY CONNECTED TO Your Number./nDont share your session id with others./n>POWERED BY ANUGA SENITHU
+						await sock.sendMessage(sock.user.id, {
 text: desc,
 contextInfo: {
 externalAdReply: {
-title: "ᴛʜᴀʀᴜꜱʜᴀ-ᴍᴅ",
-thumbnailUrl: "https://i.ibb.co/5gQ13m8p/0ef38c1555c87f01.jpg",
-sourceUrl: "https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45",
+title: "ANUGA-MD,
+thumbnailUrl: "https://postimg.cc/nX6ZH38b",
+sourceUrl: "anugasenithu.work.gd",
 mediaType: 1,
 renderLargerThumbnail: true
 }  
@@ -93,14 +93,14 @@ renderLargerThumbnail: true
 {quoted:code })
                     } catch (e) {
                             let ddd = sock.sendMessage(sock.user.id, { text: e });
-                            let desc = `*👋𝐓𝐇𝐀𝐑𝐔𝐒𝐇𝐀-𝐌𝐃 𝐬𝐞𝐬𝐬𝐢𝐨𝐧 𝐜𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝...*\n\n*🅳🅾🅽'🆃 🆂🅷🅰🆁🅴 🆃🅷🅸🆂 🅲🅾🅳🅴 🆆🅸🆃🅷 🅰🅽🆈🅾🅽🅴!*\n\n*ꜱʀɪ ʟᴀɴᴋᴀɴ ʙᴇꜱᴛ ᴡʜᴀᴛꜱᴀᴘᴘ ᴜꜱᴇʀ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ - ᴍʀ.ᴛʜᴀʀᴜꜱʜᴀ ꜱᴀɴᴅɪᴘᴀ.*\n\n🔰 *🅹🅾🅸🅽 -*https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45\n\n🔰 *🅶🅸🆃🅷🆄🅱 🆁🅴🅿🅾 -*https://github.com/Tharushaaaaa777/THARUSHA-XMD\n\n> *𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚃𝙷𝙰𝚁𝚄𝚂𝙷𝙰 〽️𝙳*`;
-                            await sock.sendMessage(sock.user.id, {
+                            let desc = `*👋HELLO, CYBER ANUWH MD SESSION ID IS SUCCESSFULLY CONNECTED TO Your Number./nDont share your session id with others./n>POWERED BY ANUGA SENITHU
+						await sock.sendMessage(sock.user.id, {
 text: desc,
 contextInfo: {
 externalAdReply: {
-title: "ᴛʜᴀʀᴜꜱʜᴀ-ᴍᴅ",
-thumbnailUrl: "https://i.ibb.co/5gQ13m8p/0ef38c1555c87f01.jpg",
-sourceUrl: "https://whatsapp.com/channel/0029Vb9LTRHInlqISdCfln45",
+title: "ANUWH-MD",
+thumbnailUrl: "https://postimg.cc/nX6ZH38b",
+sourceUrl: "anugasenithu.work.gd",
 mediaType: 2,
 renderLargerThumbnail: true,
 showAdAttribution: true
@@ -112,7 +112,7 @@ showAdAttribution: true
                     await delay(10);
                     await sock.ws.close();
                     await removeFile('./temp/' + id);
-                    console.log(`👤 ${sock.user.id} 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✅ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...`);
+                    console.log(`👤 ${sock.user.id} ANUWH MD 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✅ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...`);
                     await delay(10);
                     process.exit();
                 } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
